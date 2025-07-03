@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lesson Page - Language App</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #007BFF;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .lesson-container {
+      flex: 1;
+      max-width: 700px;
+      margin: 30px auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    }
+
+    .lesson-title {
+      font-size: 22px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    .lesson-progress {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 15px;
+      text-align: right;
+    }
+
+    .progress-bar {
+      background-color: #e0e0e0;
+      border-radius: 6px;
+      overflow: hidden;
+      height: 10px;
+      margin-bottom: 25px;
+    }
+
+    .progress {
+      width: 40%;
+      height: 100%;
+      background-color: #4caf50;
+    }
+
+    .illustration {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .illustration img {
+      max-width: 120px;
+      height: auto;
+    }
+
+    .word-box {
+      text-align: center;
+      padding: 25px 20px;
+      background-color: #f0f4ff;
+      border-radius: 10px;
+      font-size: 30px;
+      font-weight: 600;
+      color: #007BFF;
+      margin-bottom: 15px;
+      position: relative;
+    }
+
+    .audio-btn {
+      position: absolute;
+      right: 20px;
+      top: 10px;
+      background: none;
+      border: none;
+      font-size: 22px;
+      color: #007BFF;
+      cursor: pointer;
+    }
+
+    .translation {
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .breakdown, .grammar-tip, .culture-tip, .example {
+      background-color: #f8f8f8;
+      padding: 15px 20px;
+      border-left: 5px solid #007BFF;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .breakdown strong, .grammar-tip strong, .culture-tip strong, .example strong {
+      color: #007BFF;
+    }
+
+    .example small {
+      display: block;
+      color: #666;
+      font-style: italic;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    .next-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      font-size: 16px;
+      font-weight: 500;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .next-btn:hover {
+      background-color: #0056b3;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      color: #aaa;
+      margin-top: auto;
+    }
+
+    @media (max-width: 500px) {
+      .lesson-container {
+        margin: 20px;
+        padding: 20px;
+      }
+
+      .word-box {
+        font-size: 26px;
+      }
+
+      .audio-btn {
+        right: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>Lesson 1: Greetings</header>
+
+  <div class="lesson-container">
+    <div class="lesson-title">Vocabulary: Bonjour</div>
+    <div class="lesson-progress">1 of 10</div>
+
+    <div class="progress-bar">
+      <div class="progress"></div>
+    </div>
+
+    <div class="illustration">
+      <img src="https://cdn-icons-png.flaticon.com/512/197/197560.png" alt="French Icon" />
+    </div>
+
+    <div class="word-box">
+      Bonjour
+      <button class="audio-btn" onclick="document.getElementById('audioBonjour').play()">🔊</button>
+      <audio id="audioBonjour" src="assets/audio/bonjour.mp3"></audio>
+    </div>
+
+    <div class="translation">Meaning: Hello / Good morning</div>
+
+    <div class="breakdown">
+      <strong>Word Breakdown:</strong> Bon (good) + jour (day) → "Good day"
+    </div>
+
+    <div class="grammar-tip">
+      <strong>Grammar Tip:</strong> "Bonjour" is used with both men and women, and works in formal and informal settings.
+    </div>
+
+    <div class="culture-tip">
+      <strong>Culture Tip:</strong> In French culture, always greet with "Bonjour" when entering shops, restaurants, or meeting someone for the first time.
+    </div>
+
+    <div class="example">
+      <strong>Example:</strong> Bonjour, comment allez-vous ?  
+      <small>English: Hello, how are you?</small>
+    </div>
+
+    <button class="next-btn">Next →</button>
+  </div>
+
+  <footer>&copy; 2025 Language Learner | Designed for curious learners 🌍</footer>
+
+</body>
+</html>
