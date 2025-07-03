@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vocabulary Card</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f2f4f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      color: #007BFF;
+      margin-bottom: 30px;
+    }
+
+    .card-container {
+      perspective: 1000px;
+      width: 320px;
+      height: 250px;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      border-radius: 15px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    }
+
+    .card.flip {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      color: white;
+    }
+
+    .front {
+      background: linear-gradient(135deg, #007BFF, #3399ff);
+    }
+
+    .back {
+      background: linear-gradient(135deg, #28a745, #34c759);
+      transform: rotateY(180deg);
+    }
+
+    .word {
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    .label {
+      font-size: 14px;
+      margin-top: 6px;
+      opacity: 0.9;
+    }
+
+    .part-of-speech {
+      font-size: 13px;
+      background: rgba(255,255,255,0.2);
+      padding: 4px 8px;
+      border-radius: 6px;
+      margin-top: 10px;
+    }
+
+    .difficulty {
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    .example {
+      font-size: 14px;
+      margin-top: 10px;
+      color: #ffffffcc;
+      max-width: 85%;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .play-btn, .flip-btn, .next-btn {
+      padding: 10px 20px;
+      font-size: 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      color: white;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .play-btn {
+      background-color: #007BFF;
+    }
+
+    .flip-btn {
+      background-color: #6c757d;
+    }
+
+    .next-btn {
+      background-color: #17a2b8;
+    }
+
+    .play-btn:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+
+    .flip-btn:hover {
+      background-color: #5a6268;
+      transform: scale(1.05);
+    }
+
+    .next-btn:hover {
+      background-color: #117a8b;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 400px) {
+      .card-container {
+        width: 95%;
+        height: 240px;
+      }
+
+      .word {
+        font-size: 26px;
+      }
+
+      .example {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Vocabulary Card</h1>
+
+  <div class="card-container" id="vocabCard" onclick="flipCard()">
+    <div class="card" id="card">
+      <!-- Front Side -->
+      <div class="card-face front">
+        <div class="word">Bonjour</div>
+        <div class="part-of-speech">Interjection</div>
+        <div class="difficulty">⭐ Beginner</div>
+        <div class="label">Tap to see translation</div>
+      </div>
+      <!-- Back Side -->
+      <div class="card-face back">
+        <div class="word">Hello</div>
+        <div class="label">English Meaning</div>
+        <div class="example">👄 Example: “Bonjour, comment ça va ?”</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="play-btn" onclick="playAudio()">🔊 Play Audio</button>
+    <button class="flip-btn" onclick="flipCard()">🔁 Flip</button>
+    <button class="next-btn">➡ Next Word</button>
+  </div>
+
+  <!-- Replace with real audio file -->
+  <audio id="audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
+  <script>
+    function flipCard() {
+      document.getElementById('card').classList.toggle('flip');
+    }
+
+    function playAudio() {
+      const audio = document.getElementById('audio');
+      audio.currentTime = 0;
+      audio.play();
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Achievements - Language App</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f7fa;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      background-color: #007BFF;
+      color: white;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .section {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .section h2 {
+      color: #333;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .badge {
+      background-color: #f0f0f0;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      width: 140px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .badge:hover {
+      transform: scale(1.07);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    .badge img {
+      width: 60px;
+      margin-bottom: 10px;
+    }
+
+    .badge-name {
+      font-size: 14px;
+      color: #333;
+      font-weight: bold;
+    }
+
+    /* Tooltip */
+    .badge::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #333;
+      color: #fff;
+      padding: 6px 10px;
+      font-size: 12px;
+      border-radius: 6px;
+      opacity: 0;
+      white-space: nowrap;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .badge::before {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: #333;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .badge:hover::after,
+    .badge:hover::before {
+      opacity: 1;
+    }
+
+    /* Locked badge */
+    .badge.locked {
+      opacity: 0.4;
+      filter: grayscale(100%);
+      pointer-events: none;
+      background-color: #eeeeee;
+    }
+
+    /* Level Section */
+    .levels {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .level-info {
+      background-color: #e8f0fe;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .level-info h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      color: #007BFF;
+    }
+
+    .progress-bar {
+      background-color: #dcdcdc;
+      border-radius: 10px;
+      height: 16px;
+      overflow: hidden;
+    }
+
+    .progress {
+      background-color: #28a745;
+      height: 100%;
+      width: 0;
+      animation: fillProgress 1.5s forwards;
+    }
+
+    @keyframes fillProgress {
+      to { width: 65%; }
+    }
+
+    .share-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 15px;
+      background-color: #17a2b8;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .share-btn:hover {
+      background-color: #117a8b;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 600px) {
+      .badge {
+        width: 100px;
+        padding: 15px;
+      }
+
+      .badge img {
+        width: 40px;
+      }
+
+      .badge::after {
+        font-size: 10px;
+        bottom: -35px;
+      }
+
+      .badge::before {
+        bottom: -8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>Achievements</header>
+
+  <div class="section">
+    <h2>🏅 Your Badges</h2>
+    <div class="badges">
+      <div class="badge" data-tooltip="Completed your first lesson!">
+        <img src="https://cdn-icons-png.flaticon.com/512/3534/3534033.png" alt="Beginner Badge">
+        <div class="badge-name">Beginner</div>
+      </div>
+
+      <div class="badge" data-tooltip="Learned 10 new words!">
+        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="10 Words Badge">
+        <div class="badge-name">10 Words</div>
+      </div>
+
+      <div class="badge" data-tooltip="Logged in 3 days in a row!">
+        <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Streak Badge">
+        <div class="badge-name">3 Day Streak</div>
+      </div>
+
+      <div class="badge locked" data-tooltip="Unlock by mastering 5 audio lessons">
+        <img src="https://cdn-icons-png.flaticon.com/512/2940/2940663.png" alt="Audio Badge">
+        <div class="badge-name">Audio Master</div>
+      </div>
+    </div>
+
+    <div class="levels">
+      <h2>📈 Level Progress</h2>
+      <div class="level-info">
+        <h3>Level 3: Language Explorer</h3>
+        <div class="progress-bar">
+          <div class="progress"></div>
+        </div>
+        <p style="margin-top: 10px; color: #555;">You're 65% towards Level 4</p>
+        <button class="share-btn">📤 Share Achievement</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
